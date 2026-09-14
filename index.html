@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobil Tech | Acessórios e Assistência em Natal/RN</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mobil: {
+                            dark: '#070B19',
+                            card: '#0F172A',
+                            accent: '#0066FF',
+                            neon: '#00F0FF',
+                            cyan: '#38BDF8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-blue {
+            box-shadow: 0 0 25px rgba(0, 102, 255, 0.35);
+        }
+        .glow-neon {
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-mobil-dark text-slate-100 font-sans antialiased selection:bg-mobil-accent selection:text-white">
+
+    <!-- HEADER / MENU -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo Real -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-slate-900 border border-blue-500/30 flex items-center justify-center glow-blue group-hover:scale-105 transition-transform overflow-hidden">
+                    <img src="assets/logo.png" alt="Mobil Tech Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-black tracking-wider bg-gradient-to-r from-white via-mobil-cyan to-mobil-accent bg-clip-text text-transparent">MOBIL TECH</span>
+                    <span class="block text-[10px] tracking-widest text-slate-400 font-medium uppercase">Acessórios & Tecnologia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#inicio" class="hover:text-mobil-cyan transition-colors">Início</a>
+                <a href="#produtos" class="hover:text-mobil-cyan transition-colors">Produtos & Serviços</a>
+                <a href="#delivery" class="hover:text-mobil-cyan transition-colors">Delivery Rápido</a>
+                <a href="#sobre" class="hover:text-mobil-cyan transition-colors">Quem Somos</a>
+                <a href="#contato" class="hover:text-mobil-cyan transition-colors">Localização</a>
+            </nav>
+
+            <!-- Actions / Cart Button -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCartModal()" class="relative bg-slate-800/80 hover:bg-slate-700 text-slate-200 p-2.5 rounded-xl border border-slate-700 flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-cart-shopping text-mobil-cyan"></i>
+                    <span class="hidden sm:inline text-xs font-semibold">Carrinho</span>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-mobil-accent text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+                <a href="https://wa.me/5584999999999?text=Olá!%20Vim%20pelo%20site%20da%20Mobil%20Tech%20e%20gostaria%20de%20atendimento." target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-4 py-2.5 rounded-xl font-semibold text-sm shadow-lg shadow-emerald-900/30 transition-all hover:scale-105">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                </a>
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white p-2 text-xl">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-slate-800 px-6 py-4 flex flex-col gap-4 shadow-xl">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-mobil-cyan font-medium py-1">Início</a>
+            <a href="#produtos" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-mobil-cyan font-medium py-1">Produtos & Serviços</a>
+            <a href="#delivery" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-mobil-cyan font-medium py-1">Delivery Rápido</a>
+            <a href="#sobre" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-mobil-cyan font-medium py-1">Quem Somos</a>
+            <a href="#contato" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-mobil-cyan font-medium py-1">Localização</a>
+            <a href="https://wa.me/5584999999999?text=Olá!%20Vim%20pelo%20site%20da%20Mobil%20Tech." target="_blank" class="bg-emerald-600 text-white text-center py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 mt-2">
+                <i class="fa-brands fa-whatsapp text-lg"><b>Falar no WhatsApp</b></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <!-- Background Glow Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-mobil-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-mobil-neon/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-mobil-cyan text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-bolt text-mobil-neon"></i> Natal / RN • Atendimento Presencial & Delivery
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
+                        Acessórios & Tecnologia <span class="bg-gradient-to-r from-mobil-cyan via-mobil-accent to-blue-500 bg-clip-text text-transparent">para o seu dia a dia</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 font-light">
+                        <strong class="text-white font-semibold">Conecta você ao que importa!</strong> Capinhas de alta qualidade, películas aplicadas na hora, carregadores seguros e suporte técnico especializado com entrega rápida na sua casa.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#produtos" class="w-full sm:w-auto bg-gradient-to-r from-mobil-accent to-blue-600 hover:from-blue-600 hover:to-mobil-accent text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3 transition-all hover:scale-105">
+                            <i class="fa-solid fa-bag-shopping"></i> Ver Catálogo & Preços
+                        </a>
+                        <a href="#delivery" class="w-full sm:w-auto bg-slate-800/90 hover:bg-slate-700 text-slate-100 border border-slate-700 px-8 py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 transition-all hover:scale-105">
+                            <i class="fa-solid fa-motorcycle text-mobil-cyan"></i> Delivery Expresso
+                        </a>
+                    </div>
+
+                    <!-- Trust badges -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-mobil-cyan">R$ 10</p>
+                            <p class="text-xs text-slate-400">Películas a partir de</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-white">R$ 20</p>
+                            <p class="text-xs text-slate-400">Capinhas premium</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-mobil-accent">Agilidade</p>
+                            <p class="text-xs text-slate-400">Delivery na região</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image / Real Logo Display (Substituído o card simulado pela logo real) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-mobil-accent to-mobil-neon rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
+                        <div class="relative rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl bg-black/40 backdrop-blur-md p-2">
+                            <img src="assets/logo.png"Logo Oficial Mobil Tech" class="w-full h-auto object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS & SERVICES SECTION -->
+    <section id="produtos" class="py-20 bg-slate-950/60 relative border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-mobil-cyan font-semibold text-xs tracking-widest uppercase bg-blue-950/60 px-3 py-1 rounded-full border border-blue-500/20">Catálogo & Preços</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-3">Produtos de Alto Giro e Serviços</h2>
+                <p class="text-slate-400 mt-2">Escolha seus acessórios favoritos ou adicione ao carrinho para solicitar o delivery imediato.</p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button onclick="filterCategory('todos')" class="cat-btn active-cat px-5 py-2.5 rounded-xl text-sm font-semibold bg-mobil-accent text-white shadow transition-all">Todos</button>
+                <button onclick="filterCategory('acessorios')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all">Capinhas & Películas</button>
+                <button onclick="filterCategory('carregadores')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all">Cabos & Carregadores</button>
+                <button onclick="filterCategory('combos')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all">Combos Promocionais</button>
+                <button onclick="filterCategory('servicos')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all">Serviços Técnicos</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item 1: Película -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="acessorios">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <span class="absolute top-3 left-3 bg-mobil-accent text-white text-[10px] font-bold px-2.5 py-1 rounded-lg z-10">Mais Vendido</span>
+                            <img src="assets/pelicula.jpg" alt="Película de Proteção" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Pelicula'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Película de Proteção</h3>
+                        <p class="text-xs text-slate-400 mt-1">Vidro temperado ou hidrogel para diversos modelos de smartphones.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Preço sugerido</span>
+                            <span class="text-xl font-black text-mobil-cyan">R$ 10,00</span>
+                        </div>
+                        <button onclick="addToCart('Película de Proteção', 10.00)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2: Capinha -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="acessorios">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg z-10">Destaque</span>
+                            <img src="assets/capa.jpeg" alt="Capinha para Smartphone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Capinha'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Capinha para Smartphone</h3>
+                        <p class="text-xs text-slate-400 mt-1">Modelos modernos antishock e coloridos para várias marcas.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Preço sugerido</span>
+                            <span class="text-xl font-black text-mobil-cyan">R$ 20,00</span>
+                        </div>
+                        <button onclick="addToCart('Capinha para Smartphone', 20.00)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3: Combo -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="combos">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-black text-[10px] font-extrabold px-2.5 py-1 rounded-lg z-10">Super Combo</span>
+                            <img src="assets/capa e pelicula.jpeg" alt="Combo Capinha + Película" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Combo'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Combo Capinha + Película</h3>
+                        <p class="text-xs text-slate-400 mt-1">Proteção completa para o seu celular com preço especial de economia.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Preço promocional</span>
+                            <span class="text-xl font-black text-amber-400">R$ 29,90</span>
+                        </div>
+                        <button onclick="addToCart('Combo Capinha + Película', 29.90)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4: Cabo USB -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="carregadores">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg z-10">Essencial</span>
+                            <img src="assets/cabo de carregador.jpeg" alt="Cabo USB-C / Lightning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Cabo+USB'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Cabo USB-C / Lightning</h3>
+                        <p class="text-xs text-slate-400 mt-1">Cabos reforçados de alta durabilidade e carregamento rápido.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Preço sugerido</span>
+                            <span class="text-xl font-black text-mobil-cyan">R$ 15,00</span>
+                        </div>
+                        <button onclick="addToCart('Cabo USB-C / Lightning', 15.00)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 5: Carregador Rápido Completo -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="carregadores">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg z-10">Alta Potência</span>
+                            <img src="assets/carregador.jpeg" alt="Carregador Rápido Completo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Carregador'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Carregador Rápido Completo</h3>
+                        <p class="text-xs text-slate-400 mt-1">Fonte + cabo de alta performance com segurança garantida.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Preço sugerido</span>
+                            <span class="text-xl font-black text-mobil-cyan">R$ 35,00</span>
+                        </div>
+                        <button onclick="addToCart('Carregador Rápido Completo', 35.00)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 6: Fones Bluetooth -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="acessorios">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <img src="assets/fones.jpeg" alt="Fones de Ouvido Bluetooth" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Fones+Bluetooth'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Fones de Ouvido Bluetooth</h3>
+                        <p class="text-xs text-slate-400 mt-1">Áudio limpo, graves potentes e bateria de longa duração.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Preço sugerido</span>
+                            <span class="text-xl font-black text-mobil-cyan">R$ 49,90</span>
+                        </div>
+                        <button onclick="addToCart('Fone de Ouvido Bluetooth', 49.90)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 7: Configuração & Suporte Técnico -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="servicos">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg z-10">Serviço</span>
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Configuração & Suporte Técnico" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Suporte+Tecnico'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Configuração & Suporte Técnico</h3>
+                        <p class="text-xs text-slate-400 mt-1">Configuração de WhatsApp, aplicativos, sistemas e periféricos.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">A partir de</span>
+                            <span class="text-xl font-black text-mobil-cyan">R$ 15,00</span>
+                        </div>
+                        <button onclick="addToCart('Configuração & Suporte Técnico', 15.00)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 8: Criação de Sites -->
+                <div class="product-card glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between hover:border-mobil-accent/50 transition-all group" data-category="servicos">
+                    <div>
+                        <div class="relative h-48 rounded-xl bg-slate-900 overflow-hidden mb-4 flex items-center justify-center">
+                            <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg z-10">Digital</span>
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Criação de Sites para Negócios" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Criacao+de+Sites'">
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Criação de Sites para Negócios</h3>
+                        <p class="text-xs text-slate-400 mt-1">Soluções digitais simples e landing pages para pequenos negócios.</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Orçamento</span>
+                            <span class="text-xl font-black text-mobil-cyan">Sob Consulta</span>
+                        </div>
+                        <button onclick="addToCart('Criação de Sites para Negócios', 150.00)" class="bg-mobil-accent hover:bg-blue-600 text-white p-3 rounded-xl shadow transition-all hover:scale-105" title="Adicionar ao Carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DELIVERY RAPIDO SECTION -->
+    <section id="delivery" class="py-20 relative overflow-hidden bg-gradient-to-b from-mobil-dark via-slate-900 to-mobil-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Delivery Image Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-mobil-accent to-emerald-500 rounded-3xl blur-md opacity-50"></div>
+                        <div class="relative bg-slate-900 rounded-3xl overflow-hidden border border-slate-700 shadow-2xl">
+                            <img src="assets/delivery.jpeg" alt="Entregador Mobil Tech Delivery" class="w-full h-96 object-cover object-center transform hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/38bdf8?text=Mobil+Tech+Delivery'">
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-6">
+                                <span class="bg-emerald-500 text-black text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md">Online Agora</span>
+                                <h4 class="text-white font-bold text-lg mt-2">Delivery Expresso Mobil Tech</h4>
+                                <p class="text-xs text-slate-300">Entrega ágil e segura em toda Natal/RN.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery Details & Steps -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-motorcycle"></i> Serviço de Entrega Rápida
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                        Pediu, chegou! <span class="text-mobil-cyan">Seu acessório na porta de casa</span>
+                    </h2>
+
+                    <p class="text-slate-300 font-light leading-relaxed">
+                        Precisa daquela capinha nova, uma película urgente ou de um cabo carregador porque o seu estragou? Não se preocupe! O nosso serviço de delivery leva o produto até você com rapidez e total segurança em Natal/RN.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-mobil-accent/20 text-mobil-cyan flex items-center justify-center font-bold text-lg mb-3">1</div>
+                            <h4 class="font-bold text-white text-sm">Escolha os Produtos</h4>
+                            <p class="text-xs text-slate-400 mt-1">Selecione no catálogo ou mande mensagem.</p>
+                        </div>
+                        <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-mobil-accent/20 text-mobil-cyan flex items-center justify-center font-bold text-lg mb-3">2</div>
+                            <h4 class="font-bold text-white text-sm">Feche pelo WhatsApp</h4>
+                            <p class="text-xs text-slate-400 mt-1">Confirme seu endereço e forma de pagamento.</p>
+                        </div>
+                        <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg mb-3">3</div>
+                            <h4 class="font-bold text-white text-sm">Receba Rapidinho</h4>
+                            <p class="text-xs text-slate-400 mt-1">Nosso entregador leva até você com segurança.</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/5584999999999?text=Olá!%20Gostaria%20de%20pedir%20um%20acessório%20via%20delivery." target="_blank" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-emerald-900/30 transition-all hover:scale-105">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Chamar no WhatsApp para Delivery
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="sobre" class="py-20 bg-slate-950/40 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-mobil-cyan font-semibold text-xs tracking-widest uppercase bg-blue-950/60 px-3 py-1 rounded-full border border-blue-500/20">Sobre a Mobil Tech</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">Soluções simples e eficientes para o seu dia a dia</h2>
+                    <p class="text-slate-300 font-light leading-relaxed">
+                        A <strong class="text-white font-semibold">Mobil Tech</strong> nasceu com o propósito de conectar consumidores e pequenos negócios em Natal/RN a acessórios de qualidade e serviços tecnológicos acessíveis, sem complicação e com preço justo.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="text-mobil-cyan mt-1"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Transparência</h4>
+                                <p class="text-xs text-slate-400">Honestidade e clareza em cada atendimento.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="text-mobil-cyan mt-1"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Preço Justo</h4>
+                                <p class="text-xs text-slate-400">Produtos de alto giro que cabem no bolso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-mobil-accent/20 text-mobil-cyan flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">Nossa Missão</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Oferecer acessórios e serviços digitais rápidos, acessíveis e confiáveis para o cotidiano.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-3 mt-6">
+                        <div class="w-12 h-12 rounded-2xl bg-mobil-neon/20 text-mobil-neon flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Nossa Visão</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Ser referência local em tecnologia e acessórios, reconhecida pelo atendimento e praticidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / LOCATION SECTION -->
+    <section id="contato" class="py-20 bg-slate-950 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-mobil-cyan font-semibold text-xs tracking-widest uppercase bg-blue-950/60 px-3 py-1 rounded-full border border-blue-500/20">Fale Conosco</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-3">Localização & Contato</h2>
+                <p class="text-slate-400 mt-2">Atendemos em Natal/RN com ponto físico e atendimento digital rápido.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Info 1 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 text-center space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-mobil-accent/20 text-mobil-cyan flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Localização</h3>
+                    <p class="text-sm text-slate-300">Natal / Rio Grande do Norte (RN)</p>
+                    <span class="inline-block text-xs text-mobil-cyan bg-blue-950/50 px-3 py-1 rounded-full">Atendimento Local & Delivery</span>
+                </div>
+
+                <!-- Info 2 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 text-center space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white">WhatsApp Business</h3>
+                    <p class="text-sm text-slate-300">(84) 99999-9999</p>
+                    <a href="https://wa.me/5584999999999" target="_blank" class="inline-block text-xs font-bold text-emerald-400 bg-emerald-950/50 px-4 py-1.5 rounded-full hover:bg-emerald-900 transition-colors">Iniciar Conversa</a>
+                </div>
+
+                <!-- Info 3 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 text-center space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-mobil-neon/20 text-mobil-neon flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Horário de Atendimento</h3>
+                    <p class="text-sm text-slate-300">Segunda a Sábado: 08h às 19h</p>
+                    <span class="inline-block text-xs text-mobil-neon bg-cyan-950/50 px-3 py-1 rounded-full">Suporte e Delivery Ativos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-slate-900 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-mobil-accent flex items-center justify-center text-white font-bold text-xs">MT</div>
+                <span class="font-bold text-white tracking-wide">MOBIL TECH</span>
+            </div>
+            <p class="text-xs text-slate-500 text-center sm:text-left">
+                © 2026 Mobil Tech • Todos os direitos reservados. Soluções simples para o dia a dia. Natal/RN.
+            </p>
+            <div class="flex items-center gap-4 text-lg">
+                <a href="#" class="hover:text-mobil-cyan transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/5584999999999" target="_blank" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-mobil-cyan transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER / MODAL -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex justify-end">
+        <div class="w-full max-w-md bg-mobil-dark h-full border-l border-slate-800 flex flex-col p-6 shadow-2xl animate-in slide-in-from-right duration-300">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-mobil-cyan"></i>
+                    <h3 class="font-bold text-white text-lg">Seu Carrinho / Delivery</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white p-2 text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items list -->
+            <div id="cart-items" class="flex-1 overflow-y-auto py-4 space-y-3">
+                <p class="text-slate-500 text-center py-8 text-sm">Seu carrinho está vazio.</p>
+            </div>
+
+            <!-- Cart Summary & Checkout -->
+            <div class="pt-4 border-t border-slate-800 space-y-4">
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between text-slate-400">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="flex justify-between text-slate-400">
+                        <span>Taxa de Delivery (Natal/RN)</span>
+                        <span class="text-emerald-400 font-semibold">A calcular</span>
+                    </div>
+                    <div class="flex justify-between text-white font-bold text-lg pt-2 border-t border-slate-800">
+                        <span>Total</span>
+                        <span id="cart-total" class="text-mobil-cyan">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <!-- Customer Info Input for WhatsApp Order -->
+                <div class="space-y-3 pt-2">
+                    <input type="text" id="customer-name" placeholder="Seu Nome Completo" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mobil-accent">
+                    <input type="text" id="customer-address" placeholder="Endereço de Entrega (Bairro / Rua / Nº)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mobil-accent">
+                </div>
+
+                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02]">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Pedido via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            const icon = document.getElementById('menu-icon');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+
+        // Filter Products by Category
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-mobil-accent', 'text-white', 'shadow');
+                btn.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+            });
+            event.target.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+            event.target.classList.add('bg-mobil-accent', 'text-white', 'shadow');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'todos' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Cart State
+        let cart = [];
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+            
+            const countBadge = document.getElementById('cart-count');
+            countBadge.classList.add('scale-125');
+            setTimeout(() => countBadge.classList.remove('scale-125'), 200);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const cartTotal = document.getElementById('cart-total');
+
+            let totalItems = 0;
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-slate-500 text-center py-8 text-sm">Seu carrinho está vazio.</p>';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach((item, index) => {
+                    totalItems += item.qty;
+                    subtotal += item.price * item.qty;
+                    
+                    cartItemsContainer.innerHTML += `
+                        <div class="flex items-center justify-between bg-slate-900 p-3 rounded-xl border border-slate-800">
+                            <div>
+                                <h4 class="font-bold text-white text-sm">${item.name}</h4>
+                                <span class="text-xs text-mobil-cyan">R$ ${item.price.toFixed(2)}</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="flex items-center bg-slate-800 rounded-lg overflow-hidden border border-slate-700">
+                                    <button onclick="changeQty(${index}, -1)" class="px-2 py-1 text-slate-300 hover:bg-slate-700 text-xs">-</button>
+                                    <span class="px-2 text-xs font-bold text-white">${item.qty}</span>
+                                    <button onclick="changeQty(${index}, 1)" class="px-2 py-1 text-slate-300 hover:bg-slate-700 text-xs">+</button>
+                                </div>
+                                <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 text-xs p-1"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            cartCount.textContent = totalItems;
+            cartSubtotal.textContent = `R$ ${subtotal.toFixed(2)}`;
+            cartTotal.textContent = `R$ ${subtotal.toFixed(2)}`;
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio! Adicione produtos antes de enviar o pedido.');
+                return;
+            }
+
+            const name = document.getElementById('customer-name').value.trim();
+            const address = document.getElementById('customer-address').value.trim();
+
+            if (!name || !address) {
+                alert('Por favor, preencha seu Nome e Endereço para a entrega.');
+                return;
+            }
+
+            let message = `🛒 *NOVO PEDIDO - MOBIL TECH (DELIVERY)*\n\n`;
+            message += `👤 *Cliente:* ${name}\n`;
+            message += `📍 *Endereço:* ${address}\n\n`;
+            message += `🛍️ *Itens do Pedido:*\n`;
+
+            let total = 0;
+            cart.forEach(item => {
+                message += `• ${item.qty}x ${item.name} (R$ ${(item.price * item.qty).toFixed(2)})\n`;
+                total += item.price * item.qty;
+            });
+
+            message += `\n💰 *Total:* R$ ${total.toFixed(2)}\n`;
+            message += `_Aguardando confirmação e taxa de entrega._`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/5584999999999?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
